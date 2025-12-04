@@ -10,5 +10,8 @@ ENV NGINX_LISTEN=22375
 
 EXPOSE 22375
 
-LABEL maintainer="Jens Thiel <thielj@gmail.com>"
-LABEL org.opencontainers.image.source="https://github.com/thielj/docker-health-proxy"
+LABEL orig_maintainer="Jens Thiel <thielj@gmail.com>"
+LABEL orig_src="https://github.com/thielj/docker-health-proxy"
+
+LABEL forker="damian-zh <214551289+damian-zh@users.noreply.github.com>"
+LABEL org.opencontainers.image.source="https://github.com/damian-zh/docker-health-proxy"

@@ -8,7 +8,7 @@ server {
 
     #listen 22375;
     listen $NGINX_LISTEN;
-   
+
     js_import http from docker-health-proxy.js;
 
     # https://docs.docker.com/engine/api/v1.45/#tag/System/operation/SystemPing

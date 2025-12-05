@@ -27,6 +27,16 @@ server {
         js_body_filter     http.body_filter buffer_type=buffer;
     }
 
+    # https://docs.docker.com/reference/api/engine/version/v1.45/#tag/Container/operation/ContainerList
+    location ~ ^/(v[0-9.]+/)?containers/json {
+        limit_except       GET { deny all; }
+        proxy_pass         http://docker_host;
+        proxy_set_header   Accept-Encoding "";
+        
+        js_header_filter   http.header_filter;
+        js_body_filter     http.container_body_filter buffer_type=buffer;
+    }
+
     # deny every other request
     location / {
         deny all;

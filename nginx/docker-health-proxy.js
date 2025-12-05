@@ -1,5 +1,18 @@
 var collect = Buffer.from([]);
 
+function container_body_filter(r, data, flags)
+{
+    if( r.status != 200 ) 
+    {
+        //dont filter error data
+        r.sendBuffer( data, flags );
+        return;
+    }
+
+    if (! flags.last) return;
+    r.sendBuffer('[]', flags);
+}
+
 function body_filter(r, data, flags) 
 {
     if( r.status != 200 ) 
@@ -37,4 +50,4 @@ function header_filter(r)
     if( r.status == 200 ) r.headersOut[ "Content-Length" ] = null;
 }
 
-export default {header_filter,body_filter};
+export default {header_filter,container_body_filter,body_filter};
